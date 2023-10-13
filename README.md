@@ -22,19 +22,17 @@ Hemos empezado con el diseño de nuestra aplicación de envio de mensajes a otra
 
 Después de conocer estos componentes hemos implementado dos interfaces, una en la cual se escribe un mensaje y otra en la cual se dicta quien es el emisor y cual es el mensaje enviado.
 
-CAPTURA DE AMBAS INTERFACES
+![](https://github.com/mateotamayoo/SendMessageViewBinding/blob/imagenes/interfazSendMessage.png)
 
 Para continuar construimos unas clases que nos hicieron falta la cual son **Person**  y **Message**
 # Clases y generación de código
 Implementamos las dos clases ya mencionadas anteriormente, esto de una manera bastante sencilla con la herramienta de generar código de Android Studio, se ubica en **Code --> Generate**, aquí podemos decirle al entorno cuáles son los parámetros que queremos implementar, ya sean Constructor, Getter y Setter, etc.
 
-CAPTURA DE UBICACIÓN DE GENERACION CÓDIGO 
-
 Dichas clases nos las creamos dentro de un modelo de datos, esto significa que dentro del paquete donde están los ficheros .java, **creamos una clase model y dentro una clase data**, ahí dentro ya nos creamos las clases
 
 Importante comentar cada una de las clases como aparece en la siguiente captura:
 
-CAPTURA DE DOCUMENTACIÓN DE CLASE MESSAGE
+![](https://github.com/mateotamayoo/SendMessageViewBinding/blob/imagenes/documentarMessage.png)
 
 # Activity_Send_Message
 
@@ -47,7 +45,7 @@ Empezamos asegurandonos de que el botón tiene como id: **fab**, después de est
 
 Seguidamente en el método OnCreate, inicializamos el binding con el método **inflate()**, este crea una instancia de la clase para usarla, para que sea visible en pantalla usamos **setContentView** junto con **getRoot()** para obtener una referencia de la vista raíz
 
-##Evento Click
+## Evento Click
 
 Una vez terminado con lo anterior, ahora tenemos que definir el evento del botón junto con emisor, receptor, mensaje. 
 
@@ -61,9 +59,9 @@ Para empezar con el botón tenemos tres maneras de hacerlo:
 **Expresión Lambda**
 La manera con menos código y más eficiente, se basa en crear una expresión lambda a partir del **fab** que llama a un método **setOnClickListener** este como recibe un view declaramos que sea un método, dentro de este método incluiremos el emisor, receptor y mensaje.
 
-CAPTURA DEL CÓDIGO MÉTODO SEND MESSAGE
+![](https://github.com/mateotamayoo/SendMessageViewBinding/blob/imagenes/metodoSendMessage.png)
 
-###Parcelable
+### Parcelable
 Antes de poder mandar el mensaje, tenemos que indicar que la clase sea Parcelable y definirle una clave estatica que no puede cambiar, para esto indicamos que implementa **Parcelable** y implementos los método que nos piden
 
 Una vez hecho esto el código del final de la captura anterior cobra sentido, en el contenedor de información(bundle) se mete el mensaje con su clave y se le pasa la información al Intent con **putExtras()**
@@ -74,23 +72,23 @@ Empezamos declarando un mensaje que sabemos que vamos a necesitar, después de  
 
 Esta interfaz necesita menos código que la anterior, vamos a analizar el siguiente código:
 
-CAPTURA DEL MÉTODO ONCREATE DE VIEW
+![](https://github.com/mateotamayoo/SendMessageViewBinding/blob/imagenes/onCreateView.png)
 
 Ya hemos visto el método inflate y el setContentView, ahora lo siguiente es obtener la información que hemos pasado antes, para ello obtenemos el intent con **getIntent() y la información del bundle con getBundle()**, todo esto lo declaramos en un nuevo bundle para usarlo ahora.
 
 Nos quedaría inicializar el mensaje llamando a **getParcelable** junto con su clave, terminamos llamando a un método que inicializa todas las vistas o widgets de la interfaz o layout.
 
-#Ciclo de Vida
+# Ciclo de Vida
 
 El ciclo de vida se controla mediante el sistema con **callbacks**, las actividades pueden pasar por los siguientes estados: 
 
 - Running
 - Paused
 - Stopped
+  
+![](https://github.com/mateotamayoo/SendMessageViewBinding/blob/imagenes/cicloVida.png)
 
-CAPTURA DEL CICLO DE VIDA
-
-##Pares del ciclo de vida
+## Pares del ciclo de vida
 
 Es importante conocer estos para saber como trabajan: 
 
@@ -100,42 +98,35 @@ Es importante conocer estos para saber como trabajan:
 
 - Inicializar un recurso en onResume() y destruir en onPause()
 
-###Declaración de los métodos
+### Declaración de los métodos
 
 Esto se hará mediante la herramienta del IDE, ubicada en **Code --> Generate -- > Override Methods**, en ambos ficheros javas de las actividades
 
 # RES
 Vamos a ver unos cuantos apartados en el fichero de recursos de la aplicación 
 
-##Internalización
+## Internalización
 Nos referimos a utilizar varios idiomas en nuestra app, por defecto la app usa los strings que vienen en dicho fichero, pero podemos crear otros con valores de ingles por ejemplo
 
-CAPTURA DE AMBOS FICHEROS STRING
-
-Vemos que tenemos dos en nuestro proyecto
-
-##Layout
+## Layout
 En este apartado definiremos el estilo de la aplicación cuando el móvil esté en horizontal, para ello nos creamos una carpeta con el nombre **layout-land** esto lo interpreta el proyecto como un fichero en posición horizontal y ya lo podemos editar 
 
-CAPTURA DEL FICHERO EN HORIZONTAL
+![](https://github.com/mateotamayoo/SendMessageViewBinding/blob/imagenes/ficheHorizontal.png)
 
 Además de que podemos añadirle una configuración de idioma si le añadimos -es por ejemplo
 
-##Themes
+## Themes
 En este apartado se ve la definición de estilos, hemos creado un nuevo estilo para el modo oscuro que poseen los dispositivos móviles, siguiendo los mismo pasos vistos en el **layout-land**
 
 Dentro del estilo se definen los items con los colores
 
 CAPTURA DE LOS COLORES PRIMARIO Y SECUNDARIO
+![](https://github.com/mateotamayoo/SendMessageViewBinding/blob/imagenes/itemsModoNoche.png)
 
-
-##Dimens
+## Dimens
 En este fichero se definen las dimensiones que podemos utilizar para nuestro proyecto, en vez de crearlas manualmente para cada componente, se declaran aquí de manera más estructurada, junto con un name significativo al componente que hace referencia
 
-
-
-
-#ABOUT AS
+# ABOUT AS
 El about as es una actividad donde se da información sobre el autor, versión y otros apartados importantes, para saber como implementarlo hemos visto este enlace en github `<link>` : https://github.com/daniel-stoneuk/material-about-library
 
 ### Generar Cards
@@ -168,8 +159,7 @@ Siguiendo los pasos que nos indica en el fichero **Demo.java** hemos implementad
 ```
 
 Como resultado nos quedará así la interfaz: 
-
-CAPTURA DE LA INTERFAZ
+![](https://github.com/mateotamayoo/SendMessageViewBinding/blob/imagenes/aboutas.png)
 
 
 
